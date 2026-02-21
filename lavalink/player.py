@@ -256,7 +256,7 @@ class Player(RESTClient, VoiceProtocol):
             )
 
         if not self.client.shards[self.guild.shard_id].is_closed():
-            await self.guild.change_voice_state(channel=None)
+            await self.guild.change_voice_state(channel=None, connection_id=self.connection_id)
         await self.node.destroy_guild(guild_id)
         self.node.remove_player(self)
         self.cleanup()
